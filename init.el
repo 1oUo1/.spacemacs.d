@@ -40,7 +40,7 @@ This function should only modify configuration layer settings."
      ;; ----------------------------------------------------------------
      ivy
      auto-completion
-     better-defaults
+     ;; better-defaults
      emacs-lisp
      git
      ;; helm
@@ -55,7 +55,7 @@ This function should only modify configuration layer settings."
      syntax-checking
      ;; version-control
      treemacs
-     ouo
+     ouo-base
      )
 
    ;; List of additional packages that will be installed without being
@@ -153,7 +153,7 @@ It should only modify the values of Spacemacs settings."
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
-   dotspacemacs-editing-style 'vim
+   dotspacemacs-editing-style 'hybrid
 
    ;; If non-nil show the version string in the Spacemacs buffer. It will
    ;; appear as (spacemacs version)@(emacs version)
