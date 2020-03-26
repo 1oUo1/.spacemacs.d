@@ -11,7 +11,7 @@
 
 ;; 是occur的扩展,运行occur时默认光标当下文本
 ;; dwin = do what i mean.
-(defun occur-dwim ()
+(defun ouo-base/occur-dwim ()
   "Call `occur' with a sane default."
   (interactive)
   (push (if (region-active-p)

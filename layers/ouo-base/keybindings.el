@@ -10,5 +10,5 @@
 ;;; License: GPLv3
 
 ;; 将occur快捷键绑定为其扩展函数occur-dwim
-(global-set-key (kbd "M-s o") 'occur-dwim)
+(global-set-key (kbd "M-s o") 'ouo-base/occur-dwim)
 

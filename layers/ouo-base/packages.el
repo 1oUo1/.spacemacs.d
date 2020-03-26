@@ -30,7 +30,9 @@
 ;;; Code:
 
 (defconst ouo-base-packages
-  '()
+  '(company
+    lispy
+    )
   "The list of Lisp packages required by the ouo-base layer.
 
 Each entry is either:
@@ -58,5 +60,17 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
+(defun ouo-base/post-init-company ()
+  (setq company-minimum-prefix-length 1))
+
+(defun ouo-base/init-lispy ()
+  (use-package lispy
+    :defer t
+    :init
+    (progn
+      (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)))
+      (add-hook 'ielm-mode-hook (lambda () (lispy-mode 1)))
+      (add-hook 'inferior-emacs-lisp-mode-hook (lambda () (lispy-mode 1))))
+    ))
 
 ;;; packages.el ends here

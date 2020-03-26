@@ -43,6 +43,7 @@ This function should only modify configuration layer settings."
      ;; better-defaults
      emacs-lisp
      git
+     ;; command-log
      ;; helm
      ;; lsp
      markdown
@@ -196,9 +197,9 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         doom-one
-                         zenburn
                          solarized-dark
+                         zenburn
+                         doom-one
                          spacemacs-dark
                          spacemacs-light
                          solarized-light
@@ -490,6 +491,8 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (add-to-list 'load-path "~/.spacemacs.d/")
+  (require 'user-config)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
