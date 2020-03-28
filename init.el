@@ -38,24 +38,31 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ivy
      auto-completion
      ;; better-defaults
      emacs-lisp
      git
      ;; command-log
-     ;; helm
-     ;; lsp
+     helm
      markdown
      multiple-cursors
      org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
+     (python :variables
+             python-test-runner '(nose pytest)
+             python-backend 'lsp
+             python-lsp-server 'mspyls
+             )
+     (shell :variables
+            shell-default-shell 'ansi-term
+            shell-default-term-shell "/usr/bin/zsh"
+            ;; shell-default-height 30
+            ;; shell-default-position 'bottom
+            )
      spell-checking
      syntax-checking
      ;; version-control
      treemacs
+     ipython-notebook
      ouo-base
      )
 
@@ -197,9 +204,9 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         solarized-dark
-                         zenburn
                          doom-one
+                         zenburn
+                         solarized-dark
                          spacemacs-dark
                          spacemacs-light
                          solarized-light

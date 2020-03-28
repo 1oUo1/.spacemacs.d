@@ -32,6 +32,10 @@
 (defconst ouo-base-packages
   '(company
     lispy
+    conda
+    lsp
+    lsp-python-ms
+    elpy
     )
   "The list of Lisp packages required by the ouo-base layer.
 
@@ -63,6 +67,7 @@ Each entry is either:
 (defun ouo-base/post-init-company ()
   (setq company-minimum-prefix-length 1))
 
+;; lisp的结构化编辑工具lispy
 (defun ouo-base/init-lispy ()
   (use-package lispy
     :defer t
@@ -72,5 +77,55 @@ Each entry is either:
       (add-hook 'ielm-mode-hook (lambda () (lispy-mode 1)))
       (add-hook 'inferior-emacs-lisp-mode-hook (lambda () (lispy-mode 1))))
     ))
+
+;; conda插件
+(defun ouo-base/init-conda ()
+  (use-package conda
+    :init
+    :defer t
+    :config
+    (progn
+      ;; 设置miniconda的home目录
+      (custom-set-variables
+       '(conda-anaconda-home "~/developtool/miniconda/"))
+      ;; 设置miniconda的env所在目录,注意这里应该是env的上级目录,不是xxx/env/
+      (setq conda-env-home-directory (expand-file-name "~/developtool/miniconda/"))
+      ;; 设置将当前环境名显示在mode line
+      ;; (setq  mode-line-format (cons '(:exec conda-env-current-name) mode-line-format))
+      )))
+
+;; lsp:Emacs client/library for the Language Server Protocol
+(defun ouo-base/post-init-lsp ()
+  (use-package lsp-mode
+    :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+           (python-mode . lsp)
+           ;; if you want which-key integration
+           (lsp-mode . lsp-enable-which-key-integration)
+           )
+    :commands lsp
+    ))
+
+;; lsp-python-ms:emacs lsp-mode client for Microsoft's python language server
+(defun ouo-base/post-init-lsp-python-ms ()
+  (use-package lsp-python-ms
+    :demand t
+    :hook (python-mode . (lambda ()
+                           (require 'lsp-python-ms)
+                           ;; or lsp-deferred
+                           (lsp)))))
+
+;; Elpy, the Emacs Python IDE
+(defun ouo-base/init-elpy ()
+  (use-package elpy
+  :ensure t
+  :init
+  (elpy-enable)))
+
+;; Jupyter notebook client in Emacs
+;; (defun ouo-base/init-ipython-notebook ()
+;;   (use-package ipython-notebook
+;;     :ensure
+;;     :defer t))
+
 
 ;;; packages.el ends here
