@@ -52,6 +52,7 @@ This function should only modify configuration layer settings."
              python-backend 'lsp
              python-lsp-server 'mspyls
              )
+     java
      (shell :variables
             shell-default-shell 'ansi-term
             shell-default-term-shell "/usr/bin/zsh"
