@@ -47,12 +47,15 @@ This function should only modify configuration layer settings."
      markdown
      multiple-cursors
      org
+     coq
      (python :variables
              python-test-runner '(nose pytest)
              python-backend 'lsp
              python-lsp-server 'mspyls
              )
-     java
+     (c-c++ :variables c-c++-backend 'lsp-clangd)
+     (java :variables java-backend 'lsp)
+     (haskell :variables haskell-completion-backend 'lsp)
      (shell :variables
             shell-default-shell 'ansi-term
             shell-default-term-shell "/usr/bin/zsh"
@@ -228,9 +231,10 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font or prioritized list of fonts.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 10.0
+                               :size 13.0
                                :weight normal
-                               :width normal)
+                               :width normal
+                               :powerline-scale 1.1)
 
    ;; The leader key (default "SPC")
    dotspacemacs-leader-key "SPC"
@@ -481,9 +485,9 @@ configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq configuration-layer-elpa-archives
-    '(("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-      ("org-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-      ("gnu-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
+        '(("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+          ("org-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+          ("gnu-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
   )
 
 (defun dotspacemacs/user-load ()
