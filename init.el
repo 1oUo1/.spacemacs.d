@@ -53,21 +53,20 @@ This function should only modify configuration layer settings."
              python-backend 'lsp
              python-lsp-server 'mspyls
              )
+     (conda :variables
+            conda-anaconda-home "~/developtool/miniconda")
      (c-c++ :variables c-c++-backend 'lsp-clangd)
      (java :variables java-backend 'lsp)
      (haskell :variables haskell-completion-backend 'lsp)
      (shell :variables
-            shell-default-shell 'ansi-term
-            shell-default-term-shell "/usr/bin/zsh"
-            ;; shell-default-height 30
-            ;; shell-default-position 'bottom
+            shell-default-shell 'shell
             )
      spell-checking
      syntax-checking
      ;; version-control
      treemacs
      ipython-notebook
-     ouo-base
+     ouo
      )
 
    ;; List of additional packages that will be installed without being
@@ -231,7 +230,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font or prioritized list of fonts.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 13.0
+                               :size 15.0
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)

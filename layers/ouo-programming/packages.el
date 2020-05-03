@@ -1,9 +1,9 @@
-;;; packages.el --- ouo-base layer packages file for Spacemacs.
+;;; packages.el --- ouo-programming layer packages file for Spacemacs.
 ;;
 ;; Copyright (c) 2012-2018 Sylvain Benner & Contributors
 ;;
-;; Author:
-;; URL:
+;; Author:  <hanye@1ouo1>
+;; URL: https://github.com/syl20bnr/spacemacs
 ;;
 ;; This file is not part of GNU Emacs.
 ;;
@@ -18,20 +18,23 @@
 ;;
 ;;
 ;; Briefly, each package to be installed or configured by this layer should be
-;; added to `ouo-base-packages'. Then, for each package PACKAGE:
+;; added to `ouo-programming-packages'. Then, for each package PACKAGE:
 ;;
 ;; - If PACKAGE is not referenced by any other Spacemacs layer, define a
-;;   function `ouo-base/init-PACKAGE' to load and initialize the package.
+;;   function `ouo-programming/init-PACKAGE' to load and initialize the package.
 
 ;; - Otherwise, PACKAGE is already referenced by another Spacemacs layer, so
-;;   define the functions `ouo-base/pre-init-PACKAGE' and/or
-;;   `ouo-base/post-init-PACKAGE' to customize the package as it is loaded.
+;;   define the functions `ouo-programming/pre-init-PACKAGE' and/or
+;;   `ouo-programming/post-init-PACKAGE' to customize the package as it is loaded.
 
 ;;; Code:
 
-(defconst ouo-base-packages
-  '()
-  "The list of Lisp packages required by the ouo-base layer.
+(defconst ouo-programming-packages
+  '(
+    lispy
+    elpy
+    )
+  "The list of Lisp packages required by the ouo-programming layer.
 
 Each entry is either:
 
@@ -58,6 +61,23 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
+;; lisp的结构化编辑工具lispy
+(defun ouo-programming/init-lispy ()
+  (use-package lispy
+    :defer t
+    :init
+    (progn
+      (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)))
+      (add-hook 'ielm-mode-hook (lambda () (lispy-mode 1)))
+      (add-hook 'inferior-emacs-lisp-mode-hook (lambda () (lispy-mode 1))))
+    ))
+
+;; Elpy, the Emacs Python IDE
+(defun ouo-programming/init-elpy ()
+  (use-package elpy
+    :ensure t
+    :init
+    (elpy-enable)))
 
 
 ;;; packages.el ends here
