@@ -12,4 +12,5 @@
 (configuration-layer/declare-layer-dependencies '(
                                                   ouo-base
                                                   ouo-programming
+                                                  ouo-org
                                                   ))

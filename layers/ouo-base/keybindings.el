@@ -11,5 +11,3 @@
 
 ;; 将occur快捷键绑定为其扩展函数occur-dwim
 (global-set-key (kbd "M-s o") 'ouo-base/occur-dwim)
-
-(define-key evil-normal-state-map (kbd "SPC p s") 'helm-do-ag-project-root)

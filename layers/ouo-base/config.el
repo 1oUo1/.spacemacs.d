@@ -20,10 +20,11 @@
 
 ;; 让Emacs重用唯一的一个缓冲区作为Dired Mode显示专用缓冲区
 
-;; Org配置
-(with-eval-after-load 'org
-  ;; 设置默认Org Agenda文件目录
-  (setq org-agenda-files '("~/agenda"))
-  ;; 设置隐藏标题的省略号图标
-  (setq org-ellipsis "⤵")
-  )
+
+;; 字体配置
+;; 设置汉字字体
+;; (set-fontset-font t 'han (font-spec :family "Hanyi Senty Yongle Encyclopedia" :size 15.0))
+(dolist (charset '(kana han symbol cjk-misc bopomofo))
+  (set-fontset-font (frame-parameter nil 'font)
+                    charset (font-spec :family "HYJinKaiJ" :size 15.0)))
+
