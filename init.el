@@ -52,6 +52,7 @@ This function should only modify configuration layer settings."
              python-test-runner '(nose pytest)
              python-backend 'lsp
              python-lsp-server 'mspyls
+             python-lsp-git-root "~/developtool/lsp/python-language-server"
              )
      (conda :variables
             conda-anaconda-home "~/developtool/miniconda")
@@ -65,7 +66,7 @@ This function should only modify configuration layer settings."
      syntax-checking
      ;; version-control
      treemacs
-     ipython-notebook
+     ;; ipython-notebook
      ouo
      )
 
@@ -230,7 +231,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font or prioritized list of fonts.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 15.0
+                               :size 13.0
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)

@@ -26,5 +26,5 @@
 ;; (set-fontset-font t 'han (font-spec :family "Hanyi Senty Yongle Encyclopedia" :size 15.0))
 (dolist (charset '(kana han symbol cjk-misc bopomofo))
   (set-fontset-font (frame-parameter nil 'font)
-                    charset (font-spec :family "HYJinKaiJ" :size 15.0)))
+                    charset (font-spec :family "HYJinKaiJ" :size 13.0)))
 

@@ -32,7 +32,9 @@
 (defconst ouo-programming-packages
   '(
     lispy
-    elpy
+    ;; elpy
+    lpy
+    ;; quickrun
     )
   "The list of Lisp packages required by the ouo-programming layer.
 
@@ -73,11 +75,24 @@ Each entry is either:
     ))
 
 ;; Elpy, the Emacs Python IDE
-(defun ouo-programming/init-elpy ()
-  (use-package elpy
-    :ensure t
-    :init
-    (elpy-enable)))
+;; (defun ouo-programming/init-elpy ()
+;;   (use-package elpy
+;;     :ensure t
+;;     :init
+;;     (elpy-enable)))
+
+;; lpy, Python IDE
+(defun ouo-programming/init-lpy ()
+  (use-package lpy
+    :hook (python-mode . lpy-mode)))
+
+;; A `extension to execute editing buffer
+;; (defun ouo-programming/init-quickrun ()
+;;   (use-package quickrun
+;;     :ensure t
+;;     :init
+;;     (quickrun-set-default "c" "c/clang")
+;;     ))
 
 
 ;;; packages.el ends here

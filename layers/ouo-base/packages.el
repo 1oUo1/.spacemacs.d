@@ -30,7 +30,9 @@
 ;;; Code:
 
 (defconst ouo-base-packages
-  '()
+  '(
+    rime
+    )
   "The list of Lisp packages required by the ouo-base layer.
 
 Each entry is either:
@@ -58,6 +60,25 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
+(defun ouo-base/init-rime ()
+  (use-package rime
+    :config
+    (setq rime-emacs-module-header-root "/usr/include/emacs-27-vcs/")
+    (setq rime-user-data-dir "~/.config/fcitx/rime")
+
+    (setq rime-posframe-properties
+          (list :background-color "#333333"
+                :foreground-color "#dcdccc"
+                :font "HYJinKaiJ"
+                :internal-border-width 10))
+
+    (setq default-input-method "rime"
+          rime-show-candidate 'posframe)
+
+    ;; (setq rime-inline-ascii-trigger 'shift-l)
+
+    ;; (define-key rime-active-mode-map (kbd "M-j") 'rime-inline-ascii)
+    ))
 
 
 ;;; packages.el ends here

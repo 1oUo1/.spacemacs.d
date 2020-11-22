@@ -30,7 +30,10 @@
 ;;; Code:
 
 (defconst ouo-org-packages
-  '()
+  '(
+    ;; org-bullets后继者
+    org-superstar
+    )
   "The list of Lisp packages required by the ouo-org layer.
 
 Each entry is either:
@@ -58,5 +61,20 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
+(defun ouo-org/post-init-org-superstar ()
+  (use-package org-superstar
+    :init
+    (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
+    :config
+    (progn
+      ;; This is usually the default, but keep in mind it must be nil
+      (setq org-hide-leading-stars nil)
+      ;; This line is necessary.
+      (setq org-superstar-leading-bullet ?\s)
+      (setq org-superstar-headline-bullets-list '("⊙" "☊" "☋" "☌" "☍" "∞"))
+      ;; (setq org-superstar-item-bullet-alist '("☊" "☋" "⊙"))
+      ;; (setq org-superstar-prettify-item-bullets t)
+      ;; (add-hook 'org-mode-hook #'ouo-org/init-org-superstar)
+      )))
 
 ;;; packages.el ends here
